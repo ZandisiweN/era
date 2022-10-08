@@ -10,7 +10,7 @@ import ProductScreen from './screens/ProductScreen'
 function App() {
   return (
     <Router>
-      <div>
+      <div className="d-flex flex-column site-container">
         <Header />
         <main>
           <Routes>
@@ -19,6 +19,7 @@ function App() {
             <Route path="/products" element={<ProductsScreen />} />
           </Routes>
         </main>
+
         <Footer />
       </div>
     </Router>
