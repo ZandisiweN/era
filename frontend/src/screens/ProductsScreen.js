@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Product from '../components/Product'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+import { Helmet } from 'react-helmet-async'
 // import data from '../data'
 
 const reducer = (state, action) => {
@@ -45,6 +46,9 @@ const ProductsScreen = () => {
   console.log(products)
   return (
     <div>
+      <Helmet>
+        <title>E R A</title>
+      </Helmet>
       <h1>Trending Products</h1>
       <div className="products">
         {loading ? (

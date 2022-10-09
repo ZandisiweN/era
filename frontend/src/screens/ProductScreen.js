@@ -1,9 +1,10 @@
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import { useReducer, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import Rating from '../components/Rating'
+import { Helmet } from 'react-helmet-async'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { getError } from '../utils'
@@ -22,6 +23,7 @@ const reducer = (state, action) => {
   }
 }
 const ProductScreen = () => {
+  const navigate = useNavigate()
   const params = useParams()
   const { slug } = params
 
@@ -55,6 +57,7 @@ const ProductScreen = () => {
       return
     }
     ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
+    navigate('/cart')
   }
   return loading ? (
     <LoadingBox />
@@ -72,6 +75,9 @@ const ProductScreen = () => {
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
+              <Helmet>
+                <title>{product.name}</title>
+              </Helmet>
               <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
