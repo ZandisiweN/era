@@ -1,4 +1,6 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Container from 'react-bootstrap/Container'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
@@ -14,6 +16,7 @@ function App() {
   return (
     <Router>
       <div className="d-flex flex-column site-container">
+        <ToastContainer position="bottom-center limit={1}" />
         <Header />
         <Container>
           <main>
