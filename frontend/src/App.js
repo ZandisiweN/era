@@ -1,4 +1,3 @@
-import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Container from 'react-bootstrap/Container'
@@ -22,33 +21,31 @@ import ProfileScreen from './screens/ProfileScreen'
 function App() {
   return (
     <Router>
-      <div className="d-flex flex-column site-container">
-        <ToastContainer position="bottom-center limit={1}" />
-        <Header />
-        <Container>
-          <main>
-            <Routes>
-              <Route path="/product/:slug" element={<ProductScreen />} />
-              <Route path="/cart" element={<CartScreen />} />
-              <Route path="/signin" element={<SigninScreen />} />
-              <Route path="/signup" element={<SignupScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="/placeorder" element={<PlaceOrderScreen />} />
-              <Route path="/order/:id" element={<OrderScreen />} />
-              <Route
-                path="/orderhistory"
-                element={<OrderHistoryScreen />}
-              ></Route>
-              <Route path="/shipping" element={<ShippingAddressScreen />} />
-              <Route path="/payment" element={<PaymentMethodScreen />} />
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/products" element={<ProductsScreen />} />
-            </Routes>
-          </main>
-        </Container>
+      <ToastContainer position="bottom-center limit={1}" />
+      <Header />
+      <Container>
+        <main>
+          <Routes>
+            <Route path="/product/:slug" element={<ProductScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
+            <Route path="/signin" element={<SigninScreen />} />
+            <Route path="/signup" element={<SignupScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
+            <Route path="/order/:id" element={<OrderScreen />} />
+            <Route
+              path="/orderhistory"
+              element={<OrderHistoryScreen />}
+            ></Route>
+            <Route path="/shipping" element={<ShippingAddressScreen />} />
+            <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/products" element={<ProductsScreen />} />
+          </Routes>
+        </main>
+      </Container>
 
-        <Footer />
-      </div>
+      <Footer />
     </Router>
   )
 }
