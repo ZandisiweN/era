@@ -17,35 +17,71 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 import { OrderHistoryScreen } from './screens/OrderHistoryScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import ProtectedRoute from './components/ProtectedRoute'
+import DashboardScreen from './screens/DashboardScreen'
+import AdminRoute from './components/AdminRoute'
 
 function App() {
   return (
     <Router>
-      <ToastContainer position="bottom-center limit={1}" />
-      <Header />
-      <Container>
-        <main>
-          <Routes>
-            <Route path="/product/:slug" element={<ProductScreen />} />
-            <Route path="/cart" element={<CartScreen />} />
-            <Route path="/signin" element={<SigninScreen />} />
-            <Route path="/signup" element={<SignupScreen />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/order/:id" element={<OrderScreen />} />
-            <Route
-              path="/orderhistory"
-              element={<OrderHistoryScreen />}
-            ></Route>
-            <Route path="/shipping" element={<ShippingAddressScreen />} />
-            <Route path="/payment" element={<PaymentMethodScreen />} />
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/products" element={<ProductsScreen />} />
-          </Routes>
-        </main>
-      </Container>
+      <div className=" site-container" style={{ border: '2px red solid' }}>
+        <ToastContainer position="bottom-center limit={1}" />
+        <Header />
+        <Container>
+          <main
+            className="main"
+            style={{ border: '2px blue solid', minHeight: '100vh' }}
+          >
+            <Routes>
+              <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/signup" element={<SignupScreen />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route
+                path="/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <OrderScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/orderhistory"
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
+              <Route path="/payment" element={<PaymentMethodScreen />} />
 
-      <Footer />
+              {/* Admin Routes */}
+              <Route
+                path="admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
+              />
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/products" element={<ProductsScreen />} />
+            </Routes>
+          </main>
+        </Container>
+
+        <Footer />
+      </div>
     </Router>
   )
 }

@@ -41,13 +41,14 @@ const Header = () => {
     fetchCategories()
   }, [])
   return (
-    <div
-      className={
-        sidebarIsOpen
-          ? 'd-flex flex-column site-container active-cont'
-          : 'd-flex flex-column site-container'
-      }
-    >
+    <>
+      <div
+        className={
+          sidebarIsOpen
+            ? 'd-flex flex-column site-container active-cont'
+            : 'd-flex flex-column site-container'
+        }
+      ></div>
       <header>
         <Navbar bg="light" variant="light" expand="lg">
           <Container>
@@ -94,6 +95,22 @@ const Header = () => {
                     Sign In
                   </Link>
                 )}
+                {userInfo && userInfo.isAdmin && (
+                  <NavDropdown title="Admin" id="admin-nav-dropdown">
+                    <LinkContainer to="/admin/dashboard">
+                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/products">
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/orders">
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/users">
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -122,7 +139,7 @@ const Header = () => {
           ))}
         </Nav>
       </div>
-    </div>
+    </>
   )
 }
 

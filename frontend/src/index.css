@@ -13,11 +13,13 @@ body {
   color: #fff;
   border: 1px solid #000;
 }
-.site-container {
+/* .site-container {
   min-height: 100vh;
-}
+} */
+
 main {
   flex: 1;
+  min-height: 100vh;
 }
 .products {
   display: flex;
@@ -64,7 +66,8 @@ main {
   height: 100%;
   position: absolute;
   left: -300px;
-  background-color: #100901;
+  color: #000;
+  background-color: #f8f9fa;
   transition: 0.5s;
 }
 .site-container {
