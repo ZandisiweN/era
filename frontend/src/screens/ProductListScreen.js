@@ -7,9 +7,10 @@ import { Store } from '../Store'
 import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
+import { Table, Button } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { getError } from '../utils'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -91,15 +92,14 @@ const ProductListScreen = () => {
 
   return (
     <div>
-      <Row>
+      <Row className="align-items-center">
         <Col>
           <h1>Products</h1>
         </Col>
-      </Row>
-      <Row>
-        <Col className="col text-end">
-          <Button type="button" onClick={createHandler}>
-            Create Product
+
+        <Col className="text-end">
+          <Button type="button" onClick={createHandler} className="my-3">
+            <i className="fas fa-plus"></i> Create Product
           </Button>
         </Col>
       </Row>
@@ -112,13 +112,14 @@ const ProductListScreen = () => {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <table className="table">
+          <Table bordered hover responsive className="table-sm">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
+                <th>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
@@ -128,10 +129,20 @@ const ProductListScreen = () => {
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.category}</td>
+                  <td>
+                    <Button
+                      variant="light"
+                      className="btn-sm"
+                      type="button"
+                      onClick={() => navigate(`/admin/product/${product._id}`)}
+                    >
+                      <i className="fas fa-edit"></i>
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
           <div>
             {[...Array(pages).keys()].map((x) => (
               <Link
