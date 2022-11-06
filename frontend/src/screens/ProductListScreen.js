@@ -10,7 +10,6 @@ import Row from 'react-bootstrap/Row'
 import { Table, Button } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { getError } from '../utils'
-import { LinkContainer } from 'react-router-bootstrap'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -112,7 +111,7 @@ const ProductListScreen = () => {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <Table bordered hover responsive className="table-sm">
+          <Table hover responsive className="table-sm">
             <thead>
               <tr>
                 <th>ID</th>
