@@ -20,6 +20,7 @@ import ProfileScreen from './screens/ProfileScreen'
 import ProtectedRoute from './components/ProtectedRoute'
 import DashboardScreen from './screens/DashboardScreen'
 import AdminRoute from './components/AdminRoute'
+import ProductListScreen from './screens/ProductListScreen'
 
 function App() {
   return (
@@ -67,13 +68,21 @@ function App() {
 
               {/* Admin Routes */}
               <Route
-                path="admin/dashboard"
+                path="/admin/dashboard"
                 element={
                   <AdminRoute>
                     <DashboardScreen />
                   </AdminRoute>
                 }
-              />
+              ></Route>
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/products" element={<ProductsScreen />} />
             </Routes>
