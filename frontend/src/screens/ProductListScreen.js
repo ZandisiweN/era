@@ -34,17 +34,40 @@ const reducer = (state, action) => {
       }
     case 'CREATE_FAIL':
       return { ...state, loadingCreate: false }
+    case 'DELETE_REQUEST':
+      return { ...state, loadingDelete: true, successDelete: false }
+    case 'DELETE_SUCCESS':
+      return {
+        ...state,
+        loadingDelete: false,
+        successDelete: true,
+      }
+    case 'DELETE_FAIL':
+      return { ...state, loadingDelete: false, successDelete: false }
+
+    case 'DELETE_RESET':
+      return { ...state, loadingDelete: false, successDelete: false }
     default:
       return state
   }
 }
 
 const ProductListScreen = () => {
-  const [{ loading, error, products, pages, loadingCreate }, dispatch] =
-    useReducer(reducer, {
-      loading: true,
-      error: '',
-    })
+  const [
+    {
+      loading,
+      error,
+      products,
+      pages,
+      loadingCreate,
+      loadingDelete,
+      successDelete,
+    },
+    dispatch,
+  ] = useReducer(reducer, {
+    loading: true,
+    error: '',
+  })
   const navigate = useNavigate()
   const { search } = useLocation()
   const sp = new URLSearchParams(search)
@@ -63,8 +86,13 @@ const ProductListScreen = () => {
         dispatch({ type: 'FETCH_SUCCESS', payload: data })
       } catch (err) {}
     }
-    fetchData()
-  }, [page, userInfo])
+
+    if (successDelete) {
+      dispatch({ type: 'DELETE_RESET' })
+    } else {
+      fetchData()
+    }
+  }, [page, userInfo, successDelete])
 
   const createHandler = async () => {
     if (window.confirm('Are you sure?')) {
@@ -89,6 +117,23 @@ const ProductListScreen = () => {
     }
   }
 
+  const deleteHandler = async (product) => {
+    if (window.confirm('Are you sure?')) {
+      try {
+        await axios.delete(`/api/products/${product._id}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        })
+        toast.success('product deleted successfully')
+        dispatch({ type: 'DELETE_SUCCESS' })
+      } catch (err) {
+        toast.error(getError(error))
+        dispatch({
+          type: 'DELETE_FAIL',
+        })
+      }
+    }
+  }
+
   return (
     <div>
       <Row className="align-items-center">
@@ -104,6 +149,7 @@ const ProductListScreen = () => {
       </Row>
 
       {loadingCreate && <LoadingBox></LoadingBox>}
+      {loadingDelete && <LoadingBox></LoadingBox>}
 
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -130,12 +176,21 @@ const ProductListScreen = () => {
                   <td>{product.category}</td>
                   <td>
                     <Button
-                      variant="light"
+                      variant="success"
                       className="btn-sm"
                       type="button"
                       onClick={() => navigate(`/admin/product/${product._id}`)}
                     >
                       <i className="fas fa-edit"></i>
+                    </Button>
+                    &nbsp;
+                    <Button
+                      variant="danger"
+                      className="btn-sm"
+                      type="button"
+                      onClick={() => deleteHandler(product)}
+                    >
+                      <i className="fas fa-trash-can"></i>
                     </Button>
                   </td>
                 </tr>
