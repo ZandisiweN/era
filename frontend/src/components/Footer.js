@@ -5,7 +5,10 @@ import Col from 'react-bootstrap/Col'
 
 const footer = () => {
   return (
-    <footer className="footer " style={{ border: '2px green solid' }}>
+    <footer
+      className="footer "
+      style={({ border: '2px green solid' }, { background: '#ffefe7' })}
+    >
       <Container>
         <Row>
           <Col className="text-center py-3" md={4}>

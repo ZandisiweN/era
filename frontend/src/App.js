@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Container from 'react-bootstrap/Container'
@@ -25,17 +26,20 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import { OrderListScreen } from './screens/OrderListScreen'
 import { UserListScreen } from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
+import Announcement from './components/Announcement'
+import Newsletter from './components/Newsletter'
 
 function App() {
   return (
     <Router>
       <div className=" site-container" style={{ border: '2px red solid' }}>
         <ToastContainer position="bottom-center limit={1}" />
+        <Announcement />
         <Header />
         <Container>
           <main
             className="main"
-            style={{ border: '2px blue solid', minHeight: '100vh' }}
+            style={{ border: '2px blue solid', minHeight: '80vh' }}
           >
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
@@ -124,7 +128,7 @@ function App() {
             </Routes>
           </main>
         </Container>
-
+        <Newsletter />
         <Footer />
       </div>
     </Router>
