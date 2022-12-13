@@ -65,8 +65,11 @@ const SigninScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <br />
         <div className="mb-3">
-          <Button type="submit">SIGN IN</Button>
+          <Button type="submit" variant="dark">
+            SIGN IN
+          </Button>
         </div>
         <div className="mb-3">
           New customer?{' '}

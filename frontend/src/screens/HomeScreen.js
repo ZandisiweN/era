@@ -1,5 +1,8 @@
 import React from 'react'
 import hero from '../images/Hero_img2.jpeg'
+import hero2 from '../images/Pots.jpeg'
+import hero3 from '../images/kitchen.jpg'
+import Newsletter from '../components/Newsletter'
 
 const HomeScreen = () => {
   return (
@@ -42,11 +45,7 @@ const HomeScreen = () => {
             </div>
           </div>
           <div className="carousel-item" data-bs-interval="2000">
-            <img
-              src="https://picsum.photos/200/200"
-              className="d-block w-100"
-              alt="..."
-            />
+            <img src={hero2} className="d-block w-100" alt="..." />
             <div className="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>
@@ -55,11 +54,7 @@ const HomeScreen = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img
-              src="https://picsum.photos/200/200"
-              className="d-block w-100"
-              alt="..."
-            />
+            <img src={hero3} className="d-block w-100" alt="..." />
             <div className="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>
@@ -93,6 +88,7 @@ const HomeScreen = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <Newsletter />
     </div>
   )
 }

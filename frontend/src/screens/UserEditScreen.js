@@ -128,10 +128,10 @@ export default function UserEditScreen() {
             checked={isAdmin}
             onChange={(e) => setIsAdmin(e.target.checked)}
           />
-
+          <br />
           <div className="mb-3">
-            <Button disabled={loadingUpdate} type="submit">
-              Update
+            <Button disabled={loadingUpdate} type="submit" variant="dark">
+              Update User
             </Button>
             {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>

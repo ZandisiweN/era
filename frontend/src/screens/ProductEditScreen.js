@@ -209,8 +209,9 @@ const ProductEditScreen = () => {
             />
           </Form.Group>
           <div className="mb-3">
-            <Button disabled={loadingUpdate} type="submit">
-              UPDATE
+            <br />
+            <Button disabled={loadingUpdate} type="submit" variant="dark">
+              Update Product
             </Button>
             {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>

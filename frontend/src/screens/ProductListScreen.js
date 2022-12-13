@@ -142,11 +142,17 @@ const ProductListScreen = () => {
         </Col>
 
         <Col className="text-end">
-          <Button type="button" onClick={createHandler} className="my-3">
-            <i className="fas fa-plus"></i> Create Product
+          <Button
+            type="button"
+            variant="outline-secondary"
+            onClick={createHandler}
+            className="my-3"
+          >
+            <i className="fas fa-plus"></i> <nbsp /> Create Product
           </Button>
         </Col>
       </Row>
+      <br />
 
       {loadingCreate && <LoadingBox></LoadingBox>}
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -157,7 +163,7 @@ const ProductListScreen = () => {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <Table hover responsive className="table-sm">
+          <Table striped bordered hover size="sm">
             <thead>
               <tr>
                 <th>ID</th>

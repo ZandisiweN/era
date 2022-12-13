@@ -116,16 +116,16 @@ const Header = () => {
           </Container>
         </Navbar>
       </header>
-      <div
+      {/* <div
         className={
           sidebarIsOpen
             ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
             : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
         }
       >
-        <Nav className="flex-column text-white w-100 p-2">
+        <Nav className="flex-column text-black w-100 p-2">
           <Nav.Item>
-            <strong>Categories</strong>
+            <h5>Categories</h5>
           </Nav.Item>
           {categories.map((category) => (
             <Nav.Item key={category}>
@@ -138,7 +138,7 @@ const Header = () => {
             </Nav.Item>
           ))}
         </Nav>
-      </div>
+      </div> */}
     </>
   )
 }
