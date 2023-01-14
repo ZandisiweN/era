@@ -8,7 +8,7 @@ const footer = () => {
   return (
     <footer
       className="footer "
-      style={({ border: '2px green solid' }, { backgroundColor: '#cff4fc' })}
+      style={({ border: '2px green solid' }, { backgroundColor: '#FFEFE7' })}
     >
       <Container>
         <Row>

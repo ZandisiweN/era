@@ -2,13 +2,14 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   height: 50px;
-  background-color: #cff4fc;
-  color: #055160;
+  background-color: #FFEFE7;
+  color: #000;
   display flex;
   align-items: center;
   justify-content: center;
+  font: 'Times New Roman';
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 5px;
 `
 
