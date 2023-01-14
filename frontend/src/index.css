@@ -55,26 +55,6 @@ main {
 }
 
 /* sidebar */
-
-.navbar-brand {
-  font-weight: bold;
-}
-.side-navbar {
-  width: 240px;
-  height: 100%;
-  position: absolute;
-  left: -300px;
-  color: #000;
-  background-color: #f8f9fa;
-  transition: 0.5s;
-}
-.site-container {
-  transition: 0.4s;
-}
-.active-cont {
-  margin-left: 240px;
-}
-
-.active-nav {
-  left: 0;
+.side-bar-wrapper{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
